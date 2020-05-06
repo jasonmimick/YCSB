@@ -37,6 +37,9 @@ import com.mongodb.client.model.UpdateOneModel;
 import com.mongodb.client.model.UpdateOptions;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
+import com.mongodb.client.model.ReplaceOptions;
+//import com.mongodb.client.model.Filters;
+import static com.mongodb.client.model.Filters.eq;
 import site.ycsb.ByteArrayByteIterator;
 import site.ycsb.ByteIterator;
 import site.ycsb.DB;
@@ -265,8 +268,7 @@ public class MongoDbClient extends DB {
           // this is effectively an insert, but using an upsert instead due
           // to current inability of the framework to clean up after itself
           // between test runs.
-          collection.replaceOne(new Document("_id", toInsert.get("_id")),
-              toInsert, UPDATE_WITH_UPSERT);
+          collection.replaceOne(eq("_id", key), toInsert,  new ReplaceOptions().upsert(true));
         } else {
           collection.insertOne(toInsert);
         }

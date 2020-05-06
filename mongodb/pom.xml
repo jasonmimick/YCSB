@@ -31,15 +31,18 @@ LICENSE file.
   <packaging>jar</packaging>
 
   <dependencies>
+      <!--
     <dependency>
       <groupId>org.mongodb</groupId>
       <artifactId>mongo-java-driver</artifactId>
       <version>${mongodb.version}</version>
     </dependency>
+      -->
     <dependency>
-      <groupId>com.allanbank</groupId>
-      <artifactId>mongodb-async-driver</artifactId>
-      <version>${mongodb.async.version}</version>
+      <groupId>org.mongodb</groupId>
+      <artifactId>mongodb-driver-legacy</artifactId>
+          <!--<artifactId>mongodb-driver-sync</artifactId>-->
+      <version>${mongodb.version}</version>
     </dependency>
     <dependency>
       <groupId>site.ycsb</groupId>
@@ -68,6 +71,7 @@ LICENSE file.
       <scope>compile</scope>
     </dependency>
   </dependencies>
+  <!--
   <repositories>
     <repository>
       <releases>
@@ -86,4 +90,5 @@ LICENSE file.
       <layout>default</layout>
     </repository>
   </repositories>
+  -->
 </project>
